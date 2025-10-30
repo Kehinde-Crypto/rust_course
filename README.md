@@ -1,388 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rust Programming Course</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+Rust Programming Course
+Overview
+This comprehensive Rust course will take you from beginner to proficient Rust developer. Rust is a systems programming language focused on safety, speed, and concurrency, making it ideal for building reliable and efficient software.
+Prerequisites
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            overflow-x: hidden;
-        }
+Basic programming experience in any language
+Familiarity with command-line interfaces
+A computer running Windows, macOS, or Linux
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+Course Objectives
+By the end of this course, you will be able to:
 
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
+Write safe and efficient Rust code
+Understand ownership, borrowing, and lifetimes
+Build command-line applications and tools
+Work with Rust's type system and error handling
+Create concurrent and parallel programs
+Develop web services and APIs using Rust frameworks
 
-        .rust-logo {
-            font-size: 100px;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
+Course Outline
+Module 1: Getting Started
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+Installing Rust and Cargo
+Your first Rust program
+Understanding the Rust toolchain
+Basic syntax and data types
 
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a6f, #f06595);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: slideDown 1s ease-out;
-        }
+Module 2: Ownership and Borrowing
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+The ownership system
+References and borrowing
+Slices and string types
+Memory safety guarantees
 
-        .subtitle {
-            font-size: 1.3em;
-            color: #a8b2d1;
-            margin-bottom: 40px;
-            animation: fadeIn 1.5s ease-out;
-        }
+Module 3: Structs and Enums
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+Defining and using structs
+Methods and associated functions
+Enums and pattern matching
+The Option and Result types
 
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
+Module 4: Collections and Error Handling
 
-        .module-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: cardSlideUp 0.6s ease-out forwards;
-        }
+Vectors, strings, and hash maps
+Error propagation with ?
+Custom error types
+Panic vs recoverable errors
 
-        .module-card:nth-child(1) { animation-delay: 0.1s; }
-        .module-card:nth-child(2) { animation-delay: 0.2s; }
-        .module-card:nth-child(3) { animation-delay: 0.3s; }
-        .module-card:nth-child(4) { animation-delay: 0.4s; }
-        .module-card:nth-child(5) { animation-delay: 0.5s; }
-        .module-card:nth-child(6) { animation-delay: 0.6s; }
-        .module-card:nth-child(7) { animation-delay: 0.7s; }
-        .module-card:nth-child(8) { animation-delay: 0.8s; }
+Module 5: Generics and Traits
 
-        @keyframes cardSlideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+Generic functions and types
+Trait definitions and implementations
+Trait bounds and lifetimes
+Advanced trait patterns
 
-        .module-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #ff6b6b;
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
-        }
+Module 6: Testing and Documentation
 
-        .module-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
+Writing unit and integration tests
+Documentation comments
+Benchmarking
+Test organization
 
-        .module-card:hover .module-icon {
-            transform: rotate(360deg) scale(1.2);
-        }
+Module 7: Concurrency
 
-        .module-title {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #ff6b6b;
-        }
+Threads and message passing
+Shared state concurrency
+Async/await programming
+Common concurrency patterns
 
-        .module-desc {
-            color: #a8b2d1;
-            line-height: 1.6;
-        }
+Module 8: Building Real Projects
 
-        .section {
-            margin: 80px 0;
-        }
+CLI applications with clap
+Web services with Actix or Axum
+Working with databases
+Deployment and optimization
 
-        .section-title {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
+Resources
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #ee5a6f);
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        .feature-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px 30px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .feature-item:hover {
-            background: rgba(255, 107, 107, 0.2);
-            border-color: #ff6b6b;
-            transform: scale(1.05);
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(255, 107, 107, 0.1);
-            border-radius: 30px;
-            margin: 60px 0;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin: 60px 0;
-        }
-
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3em;
-            font-weight: bold;
-            color: #ff6b6b;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #a8b2d1;
-            font-size: 1.1em;
-        }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            animation: particleFloat 20s infinite;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <div class="hero">
-            <div class="rust-logo">🦀</div>
-            <h1>Rust Programming Course</h1>
-            <p class="subtitle">Master the language that powers performance, safety, and concurrency</p>
-        </div>
-
-        <div class="stats-container">
-            <div class="stat-box">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Modules</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Hours of Content</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">Projects</div>
-            </div>
-        </div>
-
-        <section class="section">
-            <h2 class="section-title">Course Modules</h2>
-            <div class="module-grid">
-                <div class="module-card">
-                    <div class="module-icon">🚀</div>
-                    <h3 class="module-title">Getting Started</h3>
-                    <p class="module-desc">Install Rust, set up your environment, and write your first program. Learn the basics of syntax and toolchain.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">🔒</div>
-                    <h3 class="module-title">Ownership & Borrowing</h3>
-                    <p class="module-desc">Master Rust's unique ownership system, references, and memory safety guarantees.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">📦</div>
-                    <h3 class="module-title">Structs & Enums</h3>
-                    <p class="module-desc">Define custom types, implement methods, and leverage powerful pattern matching.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">📚</div>
-                    <h3 class="module-title">Collections & Errors</h3>
-                    <p class="module-desc">Work with vectors, strings, hash maps, and handle errors gracefully.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">🎯</div>
-                    <h3 class="module-title">Generics & Traits</h3>
-                    <p class="module-desc">Write flexible, reusable code with generics and trait-based polymorphism.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">🧪</div>
-                    <h3 class="module-title">Testing & Docs</h3>
-                    <p class="module-desc">Build reliable software with comprehensive testing and documentation practices.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">⚡</div>
-                    <h3 class="module-title">Concurrency</h3>
-                    <p class="module-desc">Harness the power of multi-threading and async programming safely.</p>
-                </div>
-                
-                <div class="module-card">
-                    <div class="module-icon">🛠️</div>
-                    <h3 class="module-title">Real Projects</h3>
-                    <p class="module-desc">Build CLI tools, web services, and production-ready applications.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">What You'll Learn</h2>
-            <div class="feature-list">
-                <div class="feature-item">✓ Memory Safety</div>
-                <div class="feature-item">✓ Zero-Cost Abstractions</div>
-                <div class="feature-item">✓ Thread Safety</div>
-                <div class="feature-item">✓ Pattern Matching</div>
-                <div class="feature-item">✓ Error Handling</div>
-                <div class="feature-item">✓ Async/Await</div>
-                <div class="feature-item">✓ Web Development</div>
-                <div class="feature-item">✓ CLI Applications</div>
-                <div class="feature-item">✓ Systems Programming</div>
-            </div>
-        </section>
-
-        <div class="cta-section">
-            <h2>Ready to Start Your Rust Journey?</h2>
-            <p style="margin: 20px 0; font-size: 1.2em; color: #a8b2d1;">Join thousands of developers mastering the future of systems programming</p>
-            <button class="cta-button" onclick="alert('🦀 Let\'s build something amazing with Rust!')">Get Started Now</button>
-        </div>
-    </div>
-
-    <script>
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    </script>
-</body>
-</html>
+Official Documentation: https://doc.rust-lang.org/
+The Rust Book: https://doc.rust-lang.org/book/
+Rust by Example: https://doc.rust-lang.org/rust-by-example/
+Rustlings: Interactive exercises for learning Rust
